@@ -4,26 +4,29 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import lombok.Getter;
-import lombok.Setter;
+
+import lombok.Data;
 
 /**
  * <p>
- * 
+ * 网络设备信息表
  * </p>
  *
  * @author eitan
- * @since 2023-07-22
+ * @since 2023-08-04
  */
-@Getter
-@Setter
+@Data
 @TableName("network_devices")
-public class NetworkDevice implements Serializable {
+public class NetworkDevices implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * 设备ID，主键
+     */
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
@@ -44,12 +47,6 @@ public class NetworkDevice implements Serializable {
      */
     @TableField("device_type")
     private String deviceType;
-
-    /**
-     * 设备层级，表示设备所属的核心层、接入层、汇聚层、出口区或其他分类
-     */
-    @TableField("device_layer")
-    private String deviceLayer;
 
     /**
      * 记录创建时间，在插入新设备记录时自动设置为当前时间

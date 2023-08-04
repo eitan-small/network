@@ -1,28 +1,78 @@
 package com.example.network.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+
+import java.io.Serializable;
+
 import lombok.Data;
 
+/**
+ * <p>
+ *
+ * </p>
+ *
+ * @author eitan
+ * @since 2023-08-04
+ */
 @Data
-public class Node {
+@TableName("node")
+public class Node implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+    /**
+     * 节点唯一ID，必须是唯一的字符串
+     */
+    @TableId("id")
     private String id;
 
     /**
-     * 设备序列号，唯一标识设备的字符串
+     * x坐标
      */
-    private String serialNumber;
+    @TableField("x")
+    private Object x;
 
     /**
-     * 设备名称，简短地描述设备
+     * y坐标
      */
-    private String deviceName;
+    @TableField("y")
+    private Object y;
 
     /**
-     * 设备类型，表示设备的分类，比如路由器、交换机、防火墙等
+     * 指定节点类型，内置节点类型名称或自定义节点的名称。默认为 "circle"
      */
-    private String deviceType;
+    @TableField("type")
+    private String type;
 
     /**
-     * 设备层级，表示设备所属的核心层、接入层、汇聚层、出口区或其他分类
+     * 节点的大小
      */
-    private String deviceLayer;
+    @TableField("size")
+    private Object size;
+
+    /**
+     * 指定边连入节点的连接点的位置（相对于该节点而言），可以为空
+     */
+    @TableField("anchorPoints")
+    private String anchorPoints;
+
+    /**
+     * 节点的样式属性
+     */
+    @TableField("style")
+    private String style;
+
+    /**
+     * 文本文字
+     */
+    @TableField("label")
+    private String label;
+
+    /**
+     * 文本配置项
+     */
+    @TableField("labelCfg")
+    private String labelCfg;
 }

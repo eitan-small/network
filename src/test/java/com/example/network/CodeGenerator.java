@@ -18,7 +18,7 @@ public class CodeGenerator {
     void generate() {
         FastAutoGenerator
                 // 数据源配置
-                .create("jdbc:mysql://localhost:3306/network", "root", "dxshhmh")
+                .create("jdbc:mysql://localhost:3306/network", "root", "root")
                 // 全局配置
                 .globalConfig(builder -> {
                     builder.author("eitan") // 设置作者
@@ -35,7 +35,7 @@ public class CodeGenerator {
                 })
                 // 策略配置
                 .strategyConfig(builder -> {
-                    builder.addInclude("device_connections", "network_devices") // 设置需要生成的表名
+                    builder.addInclude("device_connections", "network_devices", "node", "edge", "combo") // 设置需要生成的表名
 
                             // entity 策略配置
                             .entityBuilder().enableLombok().logicDeleteColumnName("deleted") //逻辑删除字段名

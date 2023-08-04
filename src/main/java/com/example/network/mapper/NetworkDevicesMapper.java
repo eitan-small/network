@@ -1,18 +1,18 @@
 package com.example.network.mapper;
 
-import com.example.network.entity.NetworkDevice;
+import com.example.network.entity.NetworkDevices;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
  * <p>
- *  Mapper 接口
+ * 网络设备信息表 Mapper 接口
  * </p>
  *
  * @author eitan
- * @since 2023-07-22
+ * @since 2023-08-04
  */
 @Mapper
-public interface NetworkDevicesMapper extends BaseMapper<NetworkDevice> {
+public interface NetworkDevicesMapper extends BaseMapper<NetworkDevices> {
 
 }
