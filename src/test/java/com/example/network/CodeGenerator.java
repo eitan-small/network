@@ -31,7 +31,7 @@ public class CodeGenerator {
                     builder.parent("com.example") // 设置父包名
                             .moduleName("network") // 设置父包模块名
                             .entity("entity") // pojo 实体类包名,其它包名同理
-                            .pathInfo(Collections.singletonMap(OutputFile.xml, System.getProperty("user.dir") + "/src/main/resources/mapper1")); // 设置mapperXml生成路径
+                            .pathInfo(Collections.singletonMap(OutputFile.xml, System.getProperty("user.dir") + "/src/main/resources/mapper")); // 设置mapperXml生成路径
                 })
                 // 策略配置
                 .strategyConfig(builder -> {

@@ -6,8 +6,6 @@ import com.baomidou.mybatisplus.annotation.TableName;
 
 import java.io.Serializable;
 
-import lombok.Data;
-
 /**
  * <p>
  *
@@ -16,7 +14,6 @@ import lombok.Data;
  * @author eitan
  * @since 2023-08-04
  */
-@Data
 @TableName("node")
 public class Node implements Serializable {
 
@@ -75,4 +72,76 @@ public class Node implements Serializable {
      */
     @TableField("labelCfg")
     private String labelCfg;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public Object getX() {
+        return x;
+    }
+
+    public void setX(Object x) {
+        this.x = x;
+    }
+
+    public Object getY() {
+        return y;
+    }
+
+    public void setY(Object y) {
+        this.y = y;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public Object getSize() {
+        return size;
+    }
+
+    public void setSize(Object size) {
+        this.size = size;
+    }
+
+    public String getAnchorPoints() {
+        return anchorPoints;
+    }
+
+    public void setAnchorPoints(String anchorPoints) {
+        this.anchorPoints = anchorPoints;
+    }
+
+    public String getStyle() {
+        return style;
+    }
+
+    public void setStyle(String style) {
+        this.style = style;
+    }
+
+    public String getLabel() {
+        return label;
+    }
+
+    public void setLabel(String label) {
+        this.label = label;
+    }
+
+    public String getLabelCfg() {
+        return labelCfg;
+    }
+
+    public void setLabelCfg(String labelCfg) {
+        this.labelCfg = labelCfg;
+    }
 }

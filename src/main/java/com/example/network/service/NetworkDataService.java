@@ -4,4 +4,6 @@ import com.example.network.dto.NetworkData;
 
 public interface NetworkDataService {
     NetworkData getData();
+
+    void saveData(NetworkData networkData);
 }

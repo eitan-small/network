@@ -7,6 +7,7 @@ import com.example.network.dto.NodeDTO;
 import com.example.network.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -38,5 +39,13 @@ public class NetworkDataServiceImpl implements NetworkDataService {
         networkData.setEdges(edgeDtoList);
         networkData.setCombos(comboDtoList);
         return networkData;
+    }
+
+    @Override
+    @Transactional
+    public void saveData(NetworkData networkData) {
+        nodeService.saveNodeDtoList(networkData.getNodes());
+        edgeService.saveEdgeDtoList(networkData.getEdges());
+        comboService.saveComboDtoList(networkData.getCombos());
     }
 }

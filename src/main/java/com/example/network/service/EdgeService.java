@@ -17,4 +17,6 @@ import java.util.List;
 public interface EdgeService extends IService<Edge> {
 
     List<EdgeDTO> getEdgeDtoList();
+
+    void saveEdgeDtoList(List<EdgeDTO> edges);
 }

@@ -17,4 +17,6 @@ import java.util.List;
 public interface ComboService extends IService<Combo> {
 
     List<ComboDTO> getComboDtoList();
+
+    void saveComboDtoList(List<ComboDTO> combos);
 }

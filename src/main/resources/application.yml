@@ -4,3 +4,7 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/network?userUnicode=true&characterEncoding=UTF-8
     username: root
     password: dxshhmh
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

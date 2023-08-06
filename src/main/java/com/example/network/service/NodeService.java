@@ -17,4 +17,6 @@ import java.util.List;
 public interface NodeService extends IService<Node> {
 
     List<NodeDTO> getNodeDtoList();
+
+    void saveNodeDtoList(List<NodeDTO> nodes);
 }

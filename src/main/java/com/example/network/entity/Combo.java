@@ -6,8 +6,6 @@ import com.baomidou.mybatisplus.annotation.TableName;
 
 import java.io.Serializable;
 
-import lombok.Data;
-
 /**
  * <p>
  *
@@ -16,7 +14,6 @@ import lombok.Data;
  * @author eitan
  * @since 2023-08-04
  */
-@Data
 @TableName("combo")
 public class Combo implements Serializable {
 
@@ -27,6 +24,18 @@ public class Combo implements Serializable {
      */
     @TableId("id")
     private String id;
+
+    /**
+     * x坐标
+     */
+    @TableField("x")
+    private Object x;
+
+    /**
+     * y坐标
+     */
+    @TableField("y")
+    private Object y;
 
     /**
      * 指定该 Combo 的类型，可以是内置 Combo 的类型名，也可以是自定义 Combo 的类型名。默认是 "circle"
@@ -81,4 +90,100 @@ public class Combo implements Serializable {
      */
     @TableField("labelCfg")
     private String labelCfg;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public Object getX() {
+        return x;
+    }
+
+    public void setX(Object x) {
+        this.x = x;
+    }
+
+    public Object getY() {
+        return y;
+    }
+
+    public void setY(Object y) {
+        this.y = y;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(String parentId) {
+        this.parentId = parentId;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
+
+    public String getFixSize() {
+        return fixSize;
+    }
+
+    public void setFixSize(String fixSize) {
+        this.fixSize = fixSize;
+    }
+
+    public String getFixCollapseSize() {
+        return fixCollapseSize;
+    }
+
+    public void setFixCollapseSize(String fixCollapseSize) {
+        this.fixCollapseSize = fixCollapseSize;
+    }
+
+    public String getPadding() {
+        return padding;
+    }
+
+    public void setPadding(String padding) {
+        this.padding = padding;
+    }
+
+    public String getStyle() {
+        return style;
+    }
+
+    public void setStyle(String style) {
+        this.style = style;
+    }
+
+    public String getLabel() {
+        return label;
+    }
+
+    public void setLabel(String label) {
+        this.label = label;
+    }
+
+    public String getLabelCfg() {
+        return labelCfg;
+    }
+
+    public void setLabelCfg(String labelCfg) {
+        this.labelCfg = labelCfg;
+    }
 }
