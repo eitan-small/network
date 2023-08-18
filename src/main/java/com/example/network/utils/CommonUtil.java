@@ -2,8 +2,10 @@ package com.example.network.utils;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.example.network.dto.ComboDTO;
 
 import java.util.Map;
+import java.util.Objects;
 
 public class CommonUtil {
     public static Map<String, Object> objectToMap(Object object) {
@@ -19,5 +21,26 @@ public class CommonUtil {
     public static <T> T copyProperties(Object source, Class<T> clz) {
         JSONObject jsonObject = (JSONObject) JSON.toJSON(source);
         return JSON.toJavaObject(jsonObject, clz);
+    }
+
+    public static String objectToStr(Object object) {
+        if (Objects.isNull(object)) {
+            return null;
+        }
+        return JSON.toJSONString(object);
+    }
+
+    public static Map<String, Object> strToMap(String str) {
+        if (Objects.isNull(str)) {
+            return null;
+        }
+        return JSON.parseObject(str, Map.class);
+    }
+
+    public static Object strToObject(String str) {
+        if (Objects.isNull(str)) {
+            return null;
+        }
+        return JSON.parse(str);
     }
 }

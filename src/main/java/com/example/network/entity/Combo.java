@@ -91,6 +91,9 @@ public class Combo implements Serializable {
     @TableField("labelCfg")
     private String labelCfg;
 
+    @TableField("children")
+    private String children;
+
     public String getId() {
         return id;
     }
@@ -185,5 +188,13 @@ public class Combo implements Serializable {
 
     public void setLabelCfg(String labelCfg) {
         this.labelCfg = labelCfg;
+    }
+
+    public String getChildren() {
+        return children;
+    }
+
+    public void setChildren(String children) {
+        this.children = children;
     }
 }
