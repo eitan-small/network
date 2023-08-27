@@ -4,10 +4,12 @@ import com.alibaba.fastjson.JSON;
 import com.example.network.dto.EdgeDTO;
 import com.example.network.entity.DeviceConnections;
 import com.example.network.entity.Edge;
+import com.example.network.entity.NetworkDevices;
 import com.example.network.mapper.EdgeMapper;
 import com.example.network.service.DeviceConnectionsService;
 import com.example.network.service.EdgeService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.example.network.service.NetworkDevicesService;
 import com.example.network.utils.CommonUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,9 +33,12 @@ public class EdgeServiceImpl extends ServiceImpl<EdgeMapper, Edge> implements Ed
 
     private DeviceConnectionsService deviceConnectionsService;
 
+    private NetworkDevicesService networkDevicesService;
+
     @Autowired
-    public EdgeServiceImpl(DeviceConnectionsService deviceConnectionsService) {
+    public EdgeServiceImpl(DeviceConnectionsService deviceConnectionsService, NetworkDevicesService networkDevicesService) {
         this.deviceConnectionsService = deviceConnectionsService;
+        this.networkDevicesService = networkDevicesService;
     }
 
     @Override
@@ -62,7 +67,7 @@ public class EdgeServiceImpl extends ServiceImpl<EdgeMapper, Edge> implements Ed
     }
 
     private List<EdgeDTO> convertToDTO(Map<String, Edge> edgeMap, List<DeviceConnections> deviceConnectionsList) {
-        return deviceConnectionsList.stream().map(i -> {
+        List<EdgeDTO> edgeDTOList = deviceConnectionsList.stream().map(i -> {
             EdgeDTO edgeDTO = new EdgeDTO();
             String edgeId = "edge-" + i.getId();
             Edge edge = edgeMap.get(edgeId);
@@ -78,5 +83,15 @@ public class EdgeServiceImpl extends ServiceImpl<EdgeMapper, Edge> implements Ed
             }
             return edgeDTO;
         }).collect(Collectors.toList());
+
+        Map<Integer, NetworkDevices> networkDeviceMap = networkDevicesService.list().stream().collect(Collectors.toMap(NetworkDevices::getId, i -> i));
+        // EdgeDTO 的 sourceDate 带上 NodeDTO 的信息
+        for (EdgeDTO edgeDTO : edgeDTOList) {
+            Map<String, Object> sourceData = edgeDTO.getSourceData();
+            sourceData.put("sourceNode", networkDeviceMap.get(sourceData.get("sourceDeviceId")));
+            sourceData.put("targetNode", networkDeviceMap.get(sourceData.get("destinationDeviceId")));
+        }
+
+        return edgeDTOList;
     }
 }

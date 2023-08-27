@@ -35,7 +35,7 @@ public class CodeGenerator {
                 })
                 // 策略配置
                 .strategyConfig(builder -> {
-                    builder.addInclude("device_connections", "network_devices", "node", "edge", "combo") // 设置需要生成的表名
+                    builder.addInclude("device_connections", "network_devices", "node", "edge", "combo", "dictionary_table") // 设置需要生成的表名
 
                             // entity 策略配置
                             .entityBuilder().enableLombok().logicDeleteColumnName("deleted") //逻辑删除字段名
