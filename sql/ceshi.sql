@@ -1,0 +1,9 @@
+INSERT INTO device_connections (id, source_device_id, destination_device_id, link_type, source_interface_name, destination_interface_name, created_at, updated_at) VALUES (71, 46, '49', null, 'GigabitEthernet0/26', 'GigabitEthernet0/0/8', null, null);
+INSERT INTO device_connections (id, source_device_id, destination_device_id, link_type, source_interface_name, destination_interface_name, created_at, updated_at) VALUES (72, 46, '47', null, 'GigabitEthernet0/25', 'GigabitEthernet1/0/48', null, null);
+INSERT INTO device_connections (id, source_device_id, destination_device_id, link_type, source_interface_name, destination_interface_name, created_at, updated_at) VALUES (73, 47, '46', null, 'GigabitEthernet1/0/48', 'GigabitEthernet0/25', null, null);
+INSERT INTO device_connections (id, source_device_id, destination_device_id, link_type, source_interface_name, destination_interface_name, created_at, updated_at) VALUES (74, 48, '49', null, 'GigabitEthernet5/3', 'GigabitEthernet0/0/3', null, null);
+
+INSERT INTO network_devices (id, serial_number, device_name, device_type, combo_id, created_at, updated_at) VALUES (46, '210235A1B6M173A00449', 'MSR3600', null, null, null, null);
+INSERT INTO network_devices (id, serial_number, device_name, device_type, combo_id, created_at, updated_at) VALUES (47, '219801A0MQM174000331', 'S5130-52TP-EI', null, null, null, null);
+INSERT INTO network_devices (id, serial_number, device_name, device_type, combo_id, created_at, updated_at) VALUES (48, '210235A0W3M176A00486', 'MSR 36-20', null, null, null, null);
+INSERT INTO network_devices (id, serial_number, device_name, device_type, combo_id, created_at, updated_at) VALUES (49, '210235A0W3M176A004889', 'HUAWEI-101', null, null, null, null);

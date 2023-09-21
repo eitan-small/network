@@ -14,6 +14,10 @@ public class ApiResponse<T> {
         this.data = data;
     }
 
+    public static ApiResponse success() {
+        return new ApiResponse(200, "Success", null);
+    }
+
     // 可选：定义静态方法，便于创建不同状态的响应实体
     public static <T> ApiResponse<T> success(T data) {
         return new ApiResponse<>(200, "Success", data);

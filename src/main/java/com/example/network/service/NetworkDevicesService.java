@@ -18,5 +18,19 @@ public interface NetworkDevicesService extends IService<NetworkDevices> {
 
     List<NetworkDevices> networkDevices();
 
+    void deleteCombo(String combo);
+
+    void addCombo(String combo);
+
     List<Map<String, Object>> getCombos();
+
+    List<NetworkDevices> getAddDevices(String combo, String type);
+
+    void addComboDevices(Map<String, Object> map);
+
+    void deleteDeviceCombo(String deviceName);
+
+    List<Map<String, Object>> getDeviceTypes();
+
+    void deleteDeviceType(String deviceName);
 }
