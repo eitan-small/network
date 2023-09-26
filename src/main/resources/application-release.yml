@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.192.26:3306/bee?userUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: Hx215079_
+
+server:
+  port: 8080

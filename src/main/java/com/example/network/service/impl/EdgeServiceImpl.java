@@ -1,6 +1,7 @@
 package com.example.network.service.impl;
 
 import com.alibaba.fastjson.JSON;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.network.dto.EdgeDTO;
 import com.example.network.entity.DeviceConnections;
 import com.example.network.entity.Edge;
@@ -63,6 +64,8 @@ public class EdgeServiceImpl extends ServiceImpl<EdgeMapper, Edge> implements Ed
             BeanUtils.copyProperties(i, edge);
             return edge;
         }).collect(Collectors.toList());
+
+        remove(new QueryWrapper<>());
         saveOrUpdateBatch(edgeList);
     }
 
@@ -74,13 +77,13 @@ public class EdgeServiceImpl extends ServiceImpl<EdgeMapper, Edge> implements Ed
             edgeDTO.setSourceData(CommonUtil.objectToMap(i));
             if (Objects.isNull(edge)) {
                 edgeDTO.setId(edgeId);
-                edgeDTO.setSource(i.getSourceDeviceId().toString());
-                edgeDTO.setTarget(i.getDestinationDeviceId().toString());
             } else {
                 BeanUtils.copyProperties(edge, edgeDTO);
                 Map<String, Object> style = JSON.parseObject(edge.getStyle());
                 Map<String, Object> lableCfg = JSON.parseObject(edge.getLabelCfg());
             }
+            edgeDTO.setSource(i.getSourceDeviceId().toString());
+            edgeDTO.setTarget(i.getDestinationDeviceId().toString());
             return edgeDTO;
         }).collect(Collectors.toList());
 

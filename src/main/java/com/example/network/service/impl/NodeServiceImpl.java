@@ -1,8 +1,7 @@
 package com.example.network.service.impl;
 
-import com.alibaba.fastjson.JSON;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.network.dto.NodeDTO;
-import com.example.network.entity.Edge;
 import com.example.network.entity.NetworkDevices;
 import com.example.network.entity.Node;
 import com.example.network.mapper.NodeMapper;
@@ -31,10 +30,12 @@ import java.util.stream.Collectors;
 public class NodeServiceImpl extends ServiceImpl<NodeMapper, Node> implements NodeService {
 
     private NetworkDevicesService networkDevicesService;
+    private NodeMapper nodeMapper;
 
     @Autowired
-    public NodeServiceImpl(NetworkDevicesService networkDevicesService) {
+    public NodeServiceImpl(NetworkDevicesService networkDevicesService, NodeMapper nodeMapper) {
         this.networkDevicesService = networkDevicesService;
+        this.nodeMapper = nodeMapper;
     }
 
     @Override
@@ -59,6 +60,7 @@ public class NodeServiceImpl extends ServiceImpl<NodeMapper, Node> implements No
             BeanUtils.copyProperties(i, node);
             return node;
         }).collect(Collectors.toList());
+        nodeMapper.delete(new QueryWrapper<>());
         saveOrUpdateBatch(nodeList);
     }
 
